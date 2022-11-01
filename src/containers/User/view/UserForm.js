@@ -2,7 +2,6 @@ import React, { useState, useEffect, Fragment } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import _ from 'lodash'
 
-import { Loader } from "../../../components"
 import {history} from '../../../utils/helper'
 import validateUserForm from './UserFormValidation'
 import { fetchUserEditFormDependantData, submitUserFormData, resetUserData} from '../store'
@@ -79,11 +78,8 @@ export const UserForm = (props) => {
         history.push('/user')
     }
 
-    const { blocking } = userData
-
     return (
         <Fragment>
-            <Loader blocking={blocking} />
             <h1 className="display-4 d-none d-sm-block">
                 User Details
             </h1>

@@ -1,21 +1,22 @@
-import axios from 'axios'
+import {publicApi} from '../../../axios'
 
 import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, RESET_LOGGED_USER_DATA } from './constants'
 import { setLoader } from '../../../store'
 import { history, API_URL } from '../../../utils/helper'
 
+/* action verifying logged user */
 export const login = (postData = {}, props) => {
     return async dispatch => {
         dispatch(setLoader(true))
         dispatch({ type: LOGIN_REQUEST })
         try {
-            const response = await axios.post(`${API_URL}login`, postData);
+            const response = await publicApi.post(`${API_URL}login`, postData);
 
-            if (response.data.success) {
-                const userData = (response.data.data.user)
+            if (response.success) {
+                const userData = (response.data.user)
                 dispatch({ type : LOGIN_SUCCESS, payload : userData})
                 localStorage.setItem('data', JSON.stringify(userData))
-                localStorage.setItem('accessToken', JSON.stringify(response.data.data.accessToken))
+                localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken))
                 const { from } = props?.location?.state || { from: { pathname: '/dashboard' } }
                 console.log('from', from)
                 history.push(from)

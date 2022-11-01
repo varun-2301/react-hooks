@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Pagination from "react-js-pagination"
 import _ from 'lodash'
 
-import {Loader, SearchBox, Modal, Table, DeleteButton, EditButton} from "../../../components"
+import { SearchBox, Modal, Table, DeleteButton, EditButton } from "../../../components"
 import { fetchUserData, resetUserData, deleteUser } from "../store"
 import { displayRecordNotFound } from '../../../utils/helper'
 import { RedirectButton } from "../../../components/Buttons"
@@ -84,14 +84,13 @@ export const UserList = () => {
 
     const tableHeaders = ['Username', 'First Name', 'Last Name', 'Email', 'Actions']
 
-    const {totalRecords, per_page , blocking, userList, currentPage } = users;
+    const {totalRecords, per_page , userList, currentPage } = users;
     let total = 0;
     if(typeof totalRecords != 'undefined')
         total = totalRecords;
     
     return (
         <Fragment>
-            <Loader blocking={blocking} />
             <h3>User List</h3>
 
             <div className="row clearfix">

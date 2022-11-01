@@ -1,7 +1,7 @@
 import api from '../../../axios'
 
 import { setLoader } from '../../../store'
-import {history, displaySuccessMessage} from '../../../utils/helper'
+import { history, displaySuccessMessage } from '../../../utils/helper'
 import { DELETE_USER_FAILURE, DELETE_USER_REQUEST, DELETE_USER_SUCCESS, FETCH_USER_EDIT_FORM_FAILURE, FETCH_USER_EDIT_FORM_REQUEST, FETCH_USER_EDIT_FORM_SUCCESS, RESET_USER_DATA, SUBMIT_USER_FORM_FAILURE, SUBMIT_USER_FORM_REQUEST, SUBMIT_USER_FORM_SUCCESS, USER_LIST_FAILURE, USER_LIST_REQUEST, USER_LIST_SUCCESS } from './constants';
 
 /* action for fetching user records */
@@ -11,8 +11,8 @@ export const fetchUserData = (params) => {
         dispatch({ type: USER_LIST_REQUEST })
         try {
             const response = await api.get('user', { params })
-            if (response.data.success) {
-                dispatch({ type : USER_LIST_SUCCESS, payload : response.data.data})
+            if (response.success) {
+                dispatch({ type : USER_LIST_SUCCESS, payload : response.data})
             }
 
             dispatch(setLoader(false))
@@ -32,7 +32,7 @@ export const deleteUser = (id) => {
         try {
             const response = await api.delete('user/'+id)
     
-            if (response.data.success) {
+            if (response.success) {
                 const updatedUsersList =  getState().user.userList.filter(user => user.id !== id)
                 dispatch({ type : DELETE_USER_SUCCESS, payload : updatedUsersList})
                 displaySuccessMessage('Record Deleted Successfully')
@@ -55,8 +55,8 @@ export const fetchUserEditFormDependantData = (id) => {
         try {
             const response = await api.get(`user/${id}`)
             
-            if (response.data.success) {
-                dispatch({ type : FETCH_USER_EDIT_FORM_SUCCESS, payload : response.data.data})
+            if (response.success) {
+                dispatch({ type : FETCH_USER_EDIT_FORM_SUCCESS, payload : response.data})
             }
 
             dispatch(setLoader(false))
@@ -80,9 +80,9 @@ export const submitUserFormData = (id,postData) => {
             else
                 response = await api.post(`user`, postData)
             
-            if (response.data.success) {
+            if (response.success) {
                 dispatch({ type : SUBMIT_USER_FORM_SUCCESS})
-                displaySuccessMessage(response.data.data.data)
+                displaySuccessMessage(response.data.data)
                 history.push('/user')
             }
 

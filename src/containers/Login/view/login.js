@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import LoginStyle from './style';
 import {login} from '../store'
-import { Loader} from "../../../components";
 
 export const Login = (props) => {
     const [fields, setFields] = useState({})
@@ -60,12 +59,9 @@ export const Login = (props) => {
             setFields({})
         }
     }
-
-    const { blocking } = loggedUser;
     
     return(
         <Fragment>
-            <Loader blocking={blocking} />
             <LoginStyle>
                 <div className="background-design">
                     <div id="logreg-forms">
