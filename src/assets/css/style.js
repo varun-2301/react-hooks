@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export default styled.div`
     /*
@@ -7,7 +6,6 @@ export default styled.div`
     * --------------------------------------------------
     */
     @media screen and (max-width: 992px) {
-
         .row-offcanvas {
             position: relative;
             -webkit-transition: all 0.25s ease-out;
@@ -15,9 +13,8 @@ export default styled.div`
             transition: all 0.25s ease-out;
         }
 
-        .row-offcanvas-left
-            .sidebar-offcanvas {
-                left: -33%;
+        .row-offcanvas-left .sidebar-offcanvas {
+            left: -33%;
         }
 
         .row-offcanvas-left.active {
@@ -38,8 +35,7 @@ export default styled.div`
     * --------------------------------------------------
     */
     @media screen and (max-width: 34em) {
-        .row-offcanvas-left
-            .sidebar-offcanvas {
+        .row-offcanvas-left .sidebar-offcanvas {
             left: -45%;
         }
 
@@ -47,9 +43,9 @@ export default styled.div`
             left: 45%;
             margin-left: -6px;
         }
-    
+
         .sidebar-offcanvas {
             width: 45%;
         }
     }
-`;
+`

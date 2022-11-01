@@ -1,7 +1,7 @@
-import { SET_LOADER } from "./constants"
+import { SET_LOADER } from './constants'
 
 const initialState = {
-    blocking : false
+    blocking: false,
 }
 
 export function globalState(state = initialState, action) {
@@ -10,9 +10,9 @@ export function globalState(state = initialState, action) {
     switch (type) {
         case SET_LOADER:
             return {
-                blocking    : payload,
+                blocking: payload,
             }
-        
+
         default:
             return state
     }

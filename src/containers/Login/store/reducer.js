@@ -1,4 +1,4 @@
-import {getLoggedInUserData} from '../../../utils/helper'
+import { getLoggedInUserData } from '../../../utils/helper'
 import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, RESET_LOGGED_USER_DATA } from './constants'
 
 let user = getLoggedInUserData()
@@ -10,22 +10,22 @@ export function authenticatedUser(state = initialState, action) {
     switch (type) {
         case LOGIN_REQUEST:
             return {
-                user        : {},
+                user: {},
             }
-        
+
         case LOGIN_SUCCESS:
             return {
-                user        : payload,
+                user: payload,
             }
-        
+
         case LOGIN_FAILURE:
             return {
-                user        : {},
+                user: {},
             }
 
         case RESET_LOGGED_USER_DATA:
-            return [];
-        
+            return []
+
         default:
             return state
     }

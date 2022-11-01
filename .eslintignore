@@ -1,0 +1,4 @@
+/dist/*
+/example/build/*
+/example/public/*
+package-lock.json

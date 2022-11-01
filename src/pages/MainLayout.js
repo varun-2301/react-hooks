@@ -1,36 +1,36 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react'
 
-import CommonStyle from '../assets/css/style.js';
-import Header from './layouts/Header';
-import Sidebar from './layouts/Sidebar';
-import Footer from './layouts/Footer';
+import CommonStyle from '../assets/css/style.js'
+import Header from './layouts/Header'
+import Sidebar from './layouts/Sidebar'
+import Footer from './layouts/Footer'
 
 const MainLayout = (props) => {
     /**hook equivalent to componentdidmount lifecycle */
     useEffect(() => {
-        const canvas = document.querySelector('[data-toggle=offcanvas]');
-        const row = document.querySelector('.row-offcanvas');
-        canvas.addEventListener('click', function(){
-            row.classList.toggle('active');
+        const canvas = document.querySelector('[data-toggle=offcanvas]')
+        const row = document.querySelector('.row-offcanvas')
+        canvas.addEventListener('click', function () {
+            row.classList.toggle('active')
         })
-    }, []);// eslint-disable-line react-hooks/exhaustive-deps
+    }, [])
 
-    return(
+    return (
         <CommonStyle>
             <Header {...props.children.props}></Header>
             <div className="container-fluid h-100" id="main">
                 <div className="row row-offcanvas row-offcanvas-left h-100 active">
-                    <Sidebar {...props.children.props} ></Sidebar>
+                    <Sidebar {...props.children.props}></Sidebar>
                     <div className="col main pt-5 mt-3">
                         {/** main content shows here */}
-                        {props.children} 
-                        
+                        {props.children}
+
                         <Footer {...props.children.props}></Footer>
                     </div>
                 </div>
-            </div>    
+            </div>
         </CommonStyle>
     )
 }
 
-export default MainLayout;
+export default MainLayout

@@ -1,4 +1,4 @@
-export const Table = ({tableHeaders, tableBodyContent}) => {
+export const Table = ({ tableHeaders, tableBodyContent }) => {
     return (
         <table className="table table-bordered table-striped table-hover">
             <thead>
@@ -8,9 +8,7 @@ export const Table = ({tableHeaders, tableBodyContent}) => {
                     ))}
                 </tr>
             </thead>
-            <tbody>
-                {tableBodyContent()}
-            </tbody>
+            <tbody>{tableBodyContent()}</tbody>
         </table>
     )
 }

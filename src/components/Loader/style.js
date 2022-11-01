@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export default styled.div`
     .loading-indicator {
@@ -64,7 +63,7 @@ export default styled.div`
 
     #circle {
         fill: none;
-        stroke: rgba(2,161,124, 0.5);
+        stroke: rgba(2, 161, 124, 0.5);
         stroke-linecap: round;
         stroke-width: 4;
         animation: draw 3s ease-in-out infinite;
@@ -87,4 +86,4 @@ export default styled.div`
             transform: rotate(360deg);
         }
     }
-`;
+`

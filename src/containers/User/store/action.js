@@ -2,24 +2,37 @@ import api from '../../../axios'
 
 import { setLoader } from '../../../store'
 import { history, displaySuccessMessage } from '../../../utils/helper'
-import { DELETE_USER_FAILURE, DELETE_USER_REQUEST, DELETE_USER_SUCCESS, FETCH_USER_EDIT_FORM_FAILURE, FETCH_USER_EDIT_FORM_REQUEST, FETCH_USER_EDIT_FORM_SUCCESS, RESET_USER_DATA, SUBMIT_USER_FORM_FAILURE, SUBMIT_USER_FORM_REQUEST, SUBMIT_USER_FORM_SUCCESS, USER_LIST_FAILURE, USER_LIST_REQUEST, USER_LIST_SUCCESS } from './constants';
+import {
+    DELETE_USER_FAILURE,
+    DELETE_USER_REQUEST,
+    DELETE_USER_SUCCESS,
+    FETCH_USER_EDIT_FORM_FAILURE,
+    FETCH_USER_EDIT_FORM_REQUEST,
+    FETCH_USER_EDIT_FORM_SUCCESS,
+    RESET_USER_DATA,
+    SUBMIT_USER_FORM_FAILURE,
+    SUBMIT_USER_FORM_REQUEST,
+    SUBMIT_USER_FORM_SUCCESS,
+    USER_LIST_FAILURE,
+    USER_LIST_REQUEST,
+    USER_LIST_SUCCESS,
+} from './constants'
 
 /* action for fetching user records */
 export const fetchUserData = (params) => {
-    return async dispatch => {
+    return async (dispatch) => {
         dispatch(setLoader(true))
         dispatch({ type: USER_LIST_REQUEST })
         try {
             const response = await api.get('user', { params })
             if (response.success) {
-                dispatch({ type : USER_LIST_SUCCESS, payload : response.data})
+                dispatch({ type: USER_LIST_SUCCESS, payload: response.data })
             }
 
             dispatch(setLoader(false))
-
-        } catch(error) {
+        } catch (error) {
             dispatch(setLoader(false))
-            dispatch({ type: USER_LIST_FAILURE})
+            dispatch({ type: USER_LIST_FAILURE })
         }
     }
 }
@@ -30,38 +43,36 @@ export const deleteUser = (id) => {
         dispatch(setLoader(true))
         dispatch({ type: DELETE_USER_REQUEST })
         try {
-            const response = await api.delete('user/'+id)
-    
+            const response = await api.delete('user/' + id)
+
             if (response.success) {
-                const updatedUsersList =  getState().user.userList.filter(user => user.id !== id)
-                dispatch({ type : DELETE_USER_SUCCESS, payload : updatedUsersList})
+                const updatedUsersList = getState().user.userList.filter((user) => user.id !== id)
+                dispatch({ type: DELETE_USER_SUCCESS, payload: updatedUsersList })
                 displaySuccessMessage('Record Deleted Successfully')
-            } 
+            }
 
             dispatch(setLoader(false))
-
-        } catch(error) {
+        } catch (error) {
             dispatch(setLoader(false))
-            dispatch({ type: DELETE_USER_FAILURE})
+            dispatch({ type: DELETE_USER_FAILURE })
         }
     }
 }
 
 /* action for fetching user dependant records */
 export const fetchUserEditFormDependantData = (id) => {
-    return async dispatch => {
+    return async (dispatch) => {
         dispatch(setLoader(true))
         dispatch({ type: FETCH_USER_EDIT_FORM_REQUEST })
         try {
             const response = await api.get(`user/${id}`)
-            
+
             if (response.success) {
-                dispatch({ type : FETCH_USER_EDIT_FORM_SUCCESS, payload : response.data})
+                dispatch({ type: FETCH_USER_EDIT_FORM_SUCCESS, payload: response.data })
             }
 
             dispatch(setLoader(false))
-
-        } catch(error) {
+        } catch (error) {
             dispatch(setLoader(false))
             dispatch({ type: FETCH_USER_EDIT_FORM_FAILURE })
         }
@@ -69,26 +80,23 @@ export const fetchUserEditFormDependantData = (id) => {
 }
 
 /* action for submitting user record */
-export const submitUserFormData = (id,postData) => {
-    return async dispatch => {
+export const submitUserFormData = (id, postData) => {
+    return async (dispatch) => {
         dispatch(setLoader(true))
         dispatch({ type: SUBMIT_USER_FORM_REQUEST })
         try {
             let response = ''
-            if(id)
-                response = await api.put(`user/${id}`, postData)
-            else
-                response = await api.post(`user`, postData)
-            
+            if (id) response = await api.put(`user/${id}`, postData)
+            else response = await api.post(`user`, postData)
+
             if (response.success) {
-                dispatch({ type : SUBMIT_USER_FORM_SUCCESS})
+                dispatch({ type: SUBMIT_USER_FORM_SUCCESS })
                 displaySuccessMessage(response.data.data)
                 history.push('/user')
             }
 
             dispatch(setLoader(false))
-
-        } catch(error) {
+        } catch (error) {
             dispatch(setLoader(false))
             dispatch({ type: SUBMIT_USER_FORM_FAILURE })
         }
@@ -97,7 +105,7 @@ export const submitUserFormData = (id,postData) => {
 
 /* action resetting user store data */
 export const resetUserData = () => {
-    return async dispatch => {
+    return async (dispatch) => {
         dispatch({ type: RESET_USER_DATA })
     }
 }

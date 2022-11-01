@@ -1,27 +1,20 @@
-import axios from 'axios';
-import { displayErrorMessage, loginRedirect } from '../utils/helper';
+import axios from 'axios'
+import { displayErrorMessage, loginRedirect } from '../utils/helper'
 
 const DEFAULT_HEADERS = {
-    'Content-Type'  : 'application/json',
-    Accept          : 'application/json'
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
 }
 
 export const api = axios.create({
-    baseURL : process.env.REACT_APP_BACKEND_URL,
-    responseType: "json",
-    headers : DEFAULT_HEADERS,
-})
-
-export const publicApi = axios.create({
-    baseURL : process.env.REACT_APP_BACKEND_URL,
-    responseType: "json",
-    headers : DEFAULT_HEADERS,
+    baseURL: process.env.REACT_APP_BACKEND_URL,
+    responseType: 'json',
+    headers: DEFAULT_HEADERS,
 })
 
 api.interceptors.request.use((request) => {
     const accessToken = JSON.parse(localStorage.getItem('accessToken'))
-    if(accessToken)
-        request.headers.Authorization = `Bearer ${accessToken}`
+    if (accessToken) request.headers.Authorization = `Bearer ${accessToken}`
 
     return request
 })
