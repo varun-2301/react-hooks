@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export const Table = ({ tableHeaders, tableBodyContent }) => {
     return (
         <table className="table table-bordered table-striped table-hover">
@@ -11,4 +13,9 @@ export const Table = ({ tableHeaders, tableBodyContent }) => {
             <tbody>{tableBodyContent()}</tbody>
         </table>
     )
+}
+
+Table.propTypes = {
+    tableHeaders: PropTypes.array,
+    tableBodyContent: PropTypes.func,
 }

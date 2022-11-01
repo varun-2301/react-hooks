@@ -1,6 +1,7 @@
 import React from 'react'
 import { Redirect, Route, withRouter } from 'react-router-dom'
 import _ from 'lodash'
+import PropTypes from 'prop-types'
 
 import { getLoggedInUserData } from '../utils/helper'
 
@@ -17,5 +18,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         }}
     />
 )
+
+PrivateRoute.propTypes = {
+    component: PropTypes.objectOf(PropTypes.any),
+    location: PropTypes.objectOf(PropTypes.any),
+}
 
 export default withRouter(PrivateRoute)

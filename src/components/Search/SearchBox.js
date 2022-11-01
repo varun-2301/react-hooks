@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 export const SearchBox = ({ searchValue, searchInputChangeValue, searchParentClass, searchText }) => {
     const [searchVal, setSearchVal] = useState(searchValue)
@@ -22,4 +23,11 @@ export const SearchBox = ({ searchValue, searchInputChangeValue, searchParentCla
             />
         </div>
     )
+}
+
+SearchBox.propTypes = {
+    searchValue: PropTypes.string,
+    searchParentClass: PropTypes.string,
+    searchInputChangeValue: PropTypes.func,
+    searchText: PropTypes.string,
 }

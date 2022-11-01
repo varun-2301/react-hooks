@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 import CommonStyle from '../assets/css/style.js'
 import Header from './layouts/Header'
@@ -31,6 +32,10 @@ const MainLayout = (props) => {
             </div>
         </CommonStyle>
     )
+}
+
+MainLayout.propTypes = {
+    children: PropTypes.objectOf(PropTypes.any),
 }
 
 export default MainLayout

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import BlockStyle from './style'
 
@@ -29,4 +30,8 @@ export const Loader = ({ title }) => {
 
 Loader.defaultProps = {
     title: 'Loading, Please wait',
+}
+
+Loader.propTypes = {
+    title: PropTypes.string,
 }

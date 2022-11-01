@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
+import PropTypes from 'prop-types'
 
 export const PopUpModal = ({ showModal, modalTitle, modalBody, handleModalClose, updateData }) => {
     const _handleModalCloseClick = () => handleModalClose(false)
@@ -22,4 +23,12 @@ export const PopUpModal = ({ showModal, modalTitle, modalBody, handleModalClose,
             </Modal.Footer>
         </Modal>
     )
+}
+
+PopUpModal.propTypes = {
+    showModal: PropTypes.bool,
+    modalTitle: PropTypes.string,
+    modalBody: PropTypes.string,
+    handleModalClose: PropTypes.func,
+    updateData: PropTypes.func,
 }

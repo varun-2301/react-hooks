@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import _ from 'lodash'
+import PropTypes from 'prop-types'
 
 import { history } from '../../../utils/helper'
 import validateUserForm from './UserFormValidation'
@@ -194,4 +195,8 @@ export const UserForm = (props) => {
             </form>
         </Fragment>
     )
+}
+
+UserForm.propTypes = {
+    match: PropTypes.objectOf(PropTypes.any),
 }
