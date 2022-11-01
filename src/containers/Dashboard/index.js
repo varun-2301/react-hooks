@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 
-const Dashboard = (props) => {
+export const Dashboard = (props) => {
     /**fetched data from redux store */
     const loggedUser = useSelector(state => state.authenticatedUser);
     const {user} = loggedUser;
@@ -14,5 +14,3 @@ const Dashboard = (props) => {
         </div>
     )
 }
-
-export default Dashboard;
