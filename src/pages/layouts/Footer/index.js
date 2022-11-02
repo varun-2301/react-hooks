@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <FooterStyle>
             <footer className="main-footer fixed-bottom">
-                <strong>Copyright © 2014-{2021}</strong>
+                <strong>Copyright © 2014-{new Date().getFullYear()}</strong>
             </footer>
         </FooterStyle>
     )
