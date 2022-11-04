@@ -70,10 +70,7 @@ const requestTokenHeader = () => {
 }
 
 /* returns object to navigate pages/routes */
-const history = createBrowserHistory()
-
-/* returns base url */
-const API_URL = process.env.REACT_APP_BACKEND_URL
+const history = createBrowserHistory({ window })
 
 export {
     loginRedirect,
@@ -83,7 +80,6 @@ export {
     getLoggedInUserData,
     requestTokenHeader,
     history,
-    API_URL,
 }
 
 export default handleHttpError

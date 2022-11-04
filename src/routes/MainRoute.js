@@ -1,11 +1,10 @@
 import React, { Fragment, lazy } from 'react'
-import { Route, Switch, Router } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 import PrivateRoute from './PrivateRoute'
-import MainLayout from '../pages/MainLayout'
 import NotFound from '../pages/NotFound/index'
+import { Loader, CustomRouter } from '../components'
 import { history } from '../utils/helper'
-import { Loader } from '../components'
 const Login = lazy(() => import('../containers/Login/view').then((module) => ({ default: module.Login })))
 const User = lazy(() => import('../containers/User').then((module) => ({ default: module.UserList })))
 const UserForm = lazy(() => import('../containers/User').then((module) => ({ default: module.UserForm })))
@@ -15,23 +14,21 @@ function MainRoute() {
     return (
         <Fragment>
             <Loader />
-            <Router history={history}>
-                <Switch>
-                    <Route exact path="/" component={Login} />
-                    <Route exact path="/login" component={Login} />
-                    <MainLayout>
-                        <Switch>
-                            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                            <PrivateRoute exact path="/user" component={User} />
-                            <PrivateRoute exact path="/user/create" component={UserForm} />
-                            <PrivateRoute exact path="/user/edit/:id" component={UserForm} />
+            <CustomRouter history={history}>
+                <Routes>
+                    <Route exact path="/" element={<Login />} />
+                    <Route exact path="/login" element={<Login />} />
 
-                            {/*Page Not Found*/}
-                            <Route component={NotFound} />
-                        </Switch>
-                    </MainLayout>
-                </Switch>
-            </Router>
+                    <Route path="/" element={<PrivateRoute />}>
+                        <Route exact path="dashboard" element={<Dashboard />} />
+                        <Route exact path="user" element={<User />} />
+                        <Route exact path="user/create" element={<UserForm />} />
+                        <Route exact path="user/edit/:id" element={<UserForm />} />
+                        {/*Page Not Found*/}
+                        <Route element={<NotFound />} />
+                    </Route>
+                </Routes>
+            </CustomRouter>
         </Fragment>
     )
 }

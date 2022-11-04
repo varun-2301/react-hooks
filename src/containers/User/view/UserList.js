@@ -109,7 +109,7 @@ export const UserList = () => {
                         {(() => {
                             if (!_.isEmpty(userList)) {
                                 return <Table tableHeaders={tableHeaders} tableBodyContent={_userListContent} />
-                            } else if (_.isEmpty(users)) {
+                            } else if (_.isEmpty(userList)) {
                                 return displayRecordNotFound('No User Records Found')
                             }
                         })()}

@@ -6,12 +6,13 @@ import PropTypes from 'prop-types'
 import { history } from '../../../utils/helper'
 import validateUserForm from './UserFormValidation'
 import { fetchUserEditFormDependantData, submitUserFormData, resetUserData } from '../store'
+import { useParams } from 'react-router-dom'
 
-export const UserForm = (props) => {
-    const currentId = props?.match?.params?.id
+export const UserForm = () => {
+    const { id } = useParams()
     const [fields, setFields] = useState({})
     const [errors, setErrors] = useState({})
-    const [applyCheck] = useState(currentId ? false : true)
+    const [applyCheck] = useState(id ? false : true)
 
     /**fetched data from redux store */
     const userData = useSelector((state) => state.user)
@@ -19,7 +20,7 @@ export const UserForm = (props) => {
 
     /**hook equivalent to componentdidmount lifecycle */
     useEffect(() => {
-        if (currentId) dispatch(fetchUserEditFormDependantData(currentId)) // action is called to fetch record
+        if (id) dispatch(fetchUserEditFormDependantData(id)) // action is called to fetch record
 
         // returned function will be called on component unmount
         return () => {
@@ -61,8 +62,8 @@ export const UserForm = (props) => {
                 username: username.value,
             }
 
-            if (currentId) {
-                dispatch(submitUserFormData(currentId, postData)) //action is called to submit data
+            if (id) {
+                dispatch(submitUserFormData(id, postData)) //action is called to submit data
             } else {
                 postData.password = password.value
                 dispatch(submitUserFormData('', postData)) // action is called to submit data
@@ -146,7 +147,7 @@ export const UserForm = (props) => {
                                 </div>
                             </div>
 
-                            {!currentId ? (
+                            {!id ? (
                                 <>
                                     <div className="col-md-6">
                                         {' '}

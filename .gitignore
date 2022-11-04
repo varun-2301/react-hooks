@@ -24,3 +24,4 @@ yarn-error.log*
 /node/*
 /public/.htaccess
 .env
+package-lock.json

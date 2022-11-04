@@ -55,11 +55,9 @@ export const Login = (props) => {
             }
 
             dispatch(login(userData, location))
-            //setFields({})
         }
     }
 
-    console.log(fields)
     return (
         <Fragment>
             <LoginStyle>

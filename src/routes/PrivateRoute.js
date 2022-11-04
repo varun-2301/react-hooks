@@ -1,27 +1,21 @@
 import React from 'react'
-import { Redirect, Route, withRouter } from 'react-router-dom'
+import { Navigate, useLocation, Outlet } from 'react-router-dom'
 import _ from 'lodash'
-import PropTypes from 'prop-types'
 
 import { getLoggedInUserData } from '../utils/helper'
+import MainLayout from '../pages/MainLayout'
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-        {...rest}
-        render={(props) => {
-            const user = getLoggedInUserData()
-            return !_.isEmpty(user) ? (
-                <Component {...props} />
-            ) : (
-                <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-            )
-        }}
-    />
-)
+const PrivateRoute = () => {
+    const user = getLoggedInUserData()
+    const location = useLocation()
 
-PrivateRoute.propTypes = {
-    component: PropTypes.objectOf(PropTypes.any),
-    location: PropTypes.objectOf(PropTypes.any),
+    return !_.isEmpty(user) ? (
+        <MainLayout>
+            <Outlet />
+        </MainLayout>
+    ) : (
+        <Navigate to="/" state={{ from: location }} replace />
+    )
 }
 
-export default withRouter(PrivateRoute)
+export default PrivateRoute
