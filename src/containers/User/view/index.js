@@ -1,2 +1,2 @@
-export { UserList } from './UserList'
-export { UserForm } from './UserForm'
+export { UserList } from './UserList/UserList'
+export { UserForm } from './UserForm/UserForm'

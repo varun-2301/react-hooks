@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import Pagination from 'react-js-pagination'
 import _ from 'lodash'
 
-import { SearchBox, Modal, Table, DeleteIcon, EditIcon, Button } from '../../../components'
-import { fetchUserData, resetUserData, deleteUser } from '../store'
-import { displayRecordNotFound } from '../../../utils/helper'
+import { SearchBox, Modal, Table, DeleteIcon, EditIcon, Button } from '../../../../components'
+import { fetchUserData, resetUserData, deleteUser } from '../../store'
+import { displayRecordNotFound } from '../../../../utils/helper'
 
 export const UserList = () => {
     const [searchTitle, setSearchTitle] = useState('')

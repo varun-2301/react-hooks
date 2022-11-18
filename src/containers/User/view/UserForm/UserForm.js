@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 
-import { history } from '../../../utils/helper'
+import { history } from '../../../../utils/helper'
 import validateUserForm from './UserFormValidation'
-import { fetchUserEditFormDependantData, submitUserFormData, resetUserData } from '../store'
+import { fetchUserEditFormDependantData, submitUserFormData, resetUserData } from '../../store'
 import { useParams } from 'react-router-dom'
-import { Button, EmailField, PasswordField, Submit, TextField } from '../../../components'
+import { Button, EmailField, PasswordField, Submit, TextField } from '../../../../components'
 
 export const UserForm = () => {
     const { id } = useParams()
