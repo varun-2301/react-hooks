@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import LoginStyle from './style'
 import { login } from '../store'
+import { EmailField, PasswordField, Submit } from '../../../components'
 
 export const Login = (props) => {
     const [fields, setFields] = useState({})
@@ -69,31 +70,25 @@ export const Login = (props) => {
                                 Sign in
                             </h1>
                             <div className="form-group">
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    placeholder="Email address"
-                                    required={true}
+                                <EmailField
                                     name="email"
                                     onChange={_handleChange}
+                                    placeholder="Email Address"
+                                    required={true}
                                 />
                                 <div className="errorMsg">{errors.email}</div>
                             </div>
                             <div className="form-group">
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    placeholder="Password"
-                                    required={true}
+                                <PasswordField
                                     name="password"
+                                    placeholder="Password"
                                     onChange={_handleChange}
+                                    required={true}
                                 />
                                 <div className="errorMsg">{errors.password}</div>
                             </div>
 
-                            <button className="btn btn-success btn-block center" type="submit">
-                                Sign in
-                            </button>
+                            <Submit className="btn btn-success btn-block center" text="Sign in" />
                         </form>
                     </div>
                 </div>

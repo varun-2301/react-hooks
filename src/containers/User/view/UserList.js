@@ -1,12 +1,12 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import Pagination from 'react-js-pagination'
 import _ from 'lodash'
 
-import { SearchBox, Modal, Table, DeleteButton, EditButton } from '../../../components'
+import { SearchBox, Modal, Table, DeleteIcon, EditIcon, Button } from '../../../components'
 import { fetchUserData, resetUserData, deleteUser } from '../store'
 import { displayRecordNotFound } from '../../../utils/helper'
-import { RedirectButton } from '../../../components/Buttons'
 
 export const UserList = () => {
     const [searchTitle, setSearchTitle] = useState('')
@@ -16,6 +16,7 @@ export const UserList = () => {
     /**fetched data from redux store */
     const users = useSelector((state) => state.user)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     /**hook equivalent to componentdidmount lifecycle */
     useEffect(() => {
@@ -52,8 +53,8 @@ export const UserList = () => {
                     <td>{data.last_name}</td>
                     <td>{data.email}</td>
                     <td className="actions">
-                        <EditButton urlToBeNavigated={`/user/edit/${data.id}`} />
-                        <DeleteButton handleClick={(event) => _handleModalShowClick(event, index)} />
+                        <EditIcon urlToBeNavigated={`/user/edit/${data.id}`} />
+                        <DeleteIcon handleClick={(event) => _handleModalShowClick(event, index)} />
                     </td>
                 </tr>
             ))
@@ -79,6 +80,9 @@ export const UserList = () => {
         }
     }
 
+    /**method to redirect user onto user form */
+    const _handleClick = () => navigate('/user/create')
+
     const tableHeaders = ['Username', 'First Name', 'Last Name', 'Email', 'Actions']
 
     const { totalRecords, per_page, userList, currentPage } = users
@@ -93,7 +97,7 @@ export const UserList = () => {
                 <div className="col-lg-12">
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-2 col-lg-2 mb-2">
-                            <RedirectButton urlToBeNavigated={'/user/create'} text={'Create User'} />
+                            <Button className="btn btn-primary" onClick={_handleClick} text="Create User" />
                         </div>
 
                         <SearchBox

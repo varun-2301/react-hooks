@@ -7,6 +7,7 @@ import { history } from '../../../utils/helper'
 import validateUserForm from './UserFormValidation'
 import { fetchUserEditFormDependantData, submitUserFormData, resetUserData } from '../store'
 import { useParams } from 'react-router-dom'
+import { Button, EmailField, PasswordField, Submit, TextField } from '../../../components'
 
 export const UserForm = () => {
     const { id } = useParams()
@@ -85,13 +86,10 @@ export const UserForm = () => {
                     <div className="col-lg-12 col-md-12 col-sm-12">
                         <div className="row clearfix">
                             <div className="col-md-6 mb-3">
-                                {' '}
                                 <b className="required">First Name</b>
                                 <div className="form-group">
-                                    <input
-                                        type="text"
+                                    <TextField
                                         name="first_name"
-                                        className="form-control"
                                         value={fields.first_name || ''}
                                         onChange={(event) => _handleChange(event)}
                                         minLength="5"
@@ -101,13 +99,10 @@ export const UserForm = () => {
                             </div>
 
                             <div className="col-md-6 mb-3">
-                                {' '}
                                 <b className="required">Last Name</b>
                                 <div className="form-group">
-                                    <input
-                                        type="text"
+                                    <TextField
                                         name="last_name"
-                                        className="form-control"
                                         value={fields.last_name || ''}
                                         onChange={(event) => _handleChange(event)}
                                         minLength="5"
@@ -117,13 +112,10 @@ export const UserForm = () => {
                             </div>
 
                             <div className="col-md-6 mb-3">
-                                {' '}
                                 <b className="required">Username</b>
                                 <div className="form-group">
-                                    <input
-                                        type="text"
+                                    <TextField
                                         name="username"
-                                        className="form-control"
                                         value={fields.username || ''}
                                         onChange={(event) => _handleChange(event)}
                                         minLength="3"
@@ -133,15 +125,13 @@ export const UserForm = () => {
                             </div>
 
                             <div className="col-md-6 mb-3">
-                                {' '}
                                 <b className="required">Email</b>
                                 <div className="form-group">
-                                    <input
-                                        type="email"
+                                    <EmailField
                                         name="email"
-                                        className="form-control"
-                                        value={fields.email || ''}
                                         onChange={(event) => _handleChange(event)}
+                                        value={fields.email || ''}
+                                        required={true}
                                     />
                                     <div className="errorMsg">{errors.email}</div>
                                 </div>
@@ -150,31 +140,27 @@ export const UserForm = () => {
                             {!id ? (
                                 <>
                                     <div className="col-md-6">
-                                        {' '}
                                         <b className="required">Password</b>
                                         <div className="form-group">
-                                            <input
-                                                type="password"
+                                            <PasswordField
                                                 name="password"
-                                                className="form-control"
                                                 value={fields.password || ''}
                                                 onChange={(event) => _handleChange(event)}
                                                 minLength="6"
+                                                required={true}
                                             />
                                             <div className="errorMsg">{errors.password}</div>
                                         </div>
                                     </div>
                                     <div className="col-md-6">
-                                        {' '}
                                         <b className="required">Confirm Password</b>
                                         <div className="form-group">
-                                            <input
-                                                type="password"
+                                            <PasswordField
                                                 name="confirm_password"
-                                                className="form-control"
                                                 value={fields.confirm_password || ''}
                                                 onChange={(event) => _handleChange(event)}
                                                 minLength="6"
+                                                required={true}
                                             />
                                             <div className="errorMsg">{errors.confirm_password}</div>
                                         </div>
@@ -187,12 +173,8 @@ export const UserForm = () => {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-success">
-                    Submit
-                </button>
-                <button className="btn btn-danger ms-2" onClick={_handleCancelForm}>
-                    Cancel
-                </button>
+                <Submit className="btn btn-success" text="Submit" />
+                <Button className="btn btn-danger ms-2" onClick={_handleCancelForm} text="Cancel" />
             </form>
         </Fragment>
     )

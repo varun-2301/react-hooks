@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export const DeleteButton = ({ handleClick }) => {
+export const DeleteIcon = ({ handleClick }) => {
     return (
         <a className="ms-2" title="Delete" style={{ cursor: 'pointer' }} onClick={handleClick}>
             <i className="fa fa-trash" aria-hidden="true"></i>
@@ -8,6 +8,6 @@ export const DeleteButton = ({ handleClick }) => {
     )
 }
 
-DeleteButton.propTypes = {
+DeleteIcon.propTypes = {
     handleClick: PropTypes.func,
 }
