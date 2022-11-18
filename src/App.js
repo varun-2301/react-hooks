@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 
 import reducer from './store/rootReducer'
 import MainRoute from './routes/MainRoute'
-import { Loader } from './components'
+import { ErrorBoundary, Loader } from './components'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
@@ -17,11 +17,13 @@ function App() {
 
     return (
         <Provider store={store}>
-            <Suspense fallback={<Loader />}>
-                <AppStyle>
-                    <MainRoute />
-                </AppStyle>
-            </Suspense>
+            <ErrorBoundary>
+                <Suspense fallback={<Loader />}>
+                    <AppStyle>
+                        <MainRoute />
+                    </AppStyle>
+                </Suspense>
+            </ErrorBoundary>
         </Provider>
     )
 }
