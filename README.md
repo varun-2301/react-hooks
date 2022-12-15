@@ -1,5 +1,5 @@
 # About:-
-This is a sample project where we tried to define the basic architecture for a React + Redux project using functional components and hooks.
+This is a sample project where we tried to define the basic architecture for a React + Redux project using functional components and hooks. It also includes lazy loading, styled components, error boundaries, latest react router version (6), custom input validations.
 
 # Prequisites:-
 - Node
