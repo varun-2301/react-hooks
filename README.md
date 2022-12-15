@@ -1,5 +1,5 @@
 # About:-
-This is a sample project where we tried to define the basic architecture for a React + Redux project using functional components and hooks. It also includes lazy loading, styled components, error boundaries, latest react router version (6), custom input validations.
+This is a sample project where we tried to define the basic architecture for a React + Redux project using functional components and hooks along with best practices. It also includes lazy loading, styled components, error boundaries, latest react router version (6), custom input validations.
 
 # Prequisites:-
 - Node
@@ -10,7 +10,7 @@ After you clone this project, do the following:
 
 ##### Setup Backend First
 Setup the api project first to get the credentials so that the project may work on your local machine
-- (https://github.com/varun-virtualemp/node-with-mongo)
+- (https://github.com/varun-2301/node-mongo)
 
 ##### Install NPM Dependencies
 ```npm install```
@@ -29,6 +29,3 @@ Setup the api project first to get the credentials so that the project may work 
 email:- testing@gmail.com
 password:- 123456
 ```
-
-# DEMO URL
-(http://3.110.188.38/)
