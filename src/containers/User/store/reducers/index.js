@@ -12,7 +12,7 @@ import {
     USER_LIST_FAILURE,
     USER_LIST_REQUEST,
     USER_LIST_SUCCESS,
-} from './constants'
+} from '../action-type'
 
 export function user(state = [], action) {
     const { type, payload } = action

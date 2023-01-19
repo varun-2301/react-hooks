@@ -1,7 +1,7 @@
-import api from '../../../axios'
+import api from '../../../../axios'
 
-import { setLoader } from '../../../store'
-import { history, displaySuccessMessage } from '../../../utils/helper'
+import { setLoader } from '../../../../store'
+import { history, displaySuccessMessage } from '../../../../utils/helper'
 import {
     DELETE_USER_FAILURE,
     DELETE_USER_REQUEST,
@@ -16,7 +16,7 @@ import {
     USER_LIST_FAILURE,
     USER_LIST_REQUEST,
     USER_LIST_SUCCESS,
-} from './constants'
+} from '../action-type'
 
 /* action for fetching user records */
 export const fetchUserData = (params) => {

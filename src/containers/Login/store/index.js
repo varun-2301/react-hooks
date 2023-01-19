@@ -1,2 +1,2 @@
-export { login, resetLoggedUserData } from './action'
-export { authenticatedUser } from './reducer'
+export { login, resetLoggedUserData } from './action-creators'
+export { authenticatedUser } from './reducers'

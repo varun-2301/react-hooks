@@ -8,7 +8,8 @@ export default styled.div`
     .toast {
         background-color: #030303 !important;
     }
-    .toast-success {
+    .toast-success,
+    .toast-message {
         background-color: #51a351 !important;
     }
     .toast-error {

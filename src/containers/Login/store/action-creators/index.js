@@ -1,8 +1,8 @@
-import api from '../../../axios'
+import api from '../../../../axios'
 
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, RESET_LOGGED_USER_DATA } from './constants'
-import { setLoader } from '../../../store'
-import { history } from '../../../utils/helper'
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, RESET_LOGGED_USER_DATA } from '../action-type'
+import { setLoader } from '../../../../store'
+import { history } from '../../../../utils/helper'
 
 /* action verifying logged user */
 export const login = (postData = {}, props) => {

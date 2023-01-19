@@ -29,25 +29,6 @@ const displayRecordNotFound = (message = 'No Records Found') => {
     )
 }
 
-/* handles error of listing HTTP requests */
-const handleHttpError = (response) => {
-    if (!_.isEmpty(response)) {
-        if (response.data.status === 401) {
-            loginRedirect()
-        } else if (response.data.status === 422) {
-            const message = Object.keys(response.data.data).map((key) => {
-                return response.data.data[key].message
-            })
-            displayErrorMessage(message)
-        } else {
-            const errorMessage = response.data.data
-            displayErrorMessage(errorMessage)
-        }
-    } else {
-        displayErrorMessage('Something went wrong')
-    }
-}
-
 /* returns logged in user info */
 const getLoggedInUserData = () => {
     let user = {}
@@ -81,5 +62,3 @@ export {
     requestTokenHeader,
     history,
 }
-
-export default handleHttpError
