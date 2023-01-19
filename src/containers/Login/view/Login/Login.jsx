@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import LoginStyle from './style'
 import { login } from '../../store'
 import { EmailField, PasswordField, Submit } from '../../../../components'
-import { displaySuccessMessage } from '../../../../utils/helper'
 
 export const Login = (props) => {
     const [fields, setFields] = useState({})
@@ -17,7 +16,6 @@ export const Login = (props) => {
     /**hook equivalent to componentdidmount lifecycle */
     useEffect(() => {
         setLocation({ ...props })
-        displaySuccessMessage('hello')
     }, [])
 
     /* validate form */
