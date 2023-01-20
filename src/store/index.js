@@ -1,2 +1,2 @@
-export { setLoader } from './action'
-export { globalState } from './reducer'
+export { setLoader } from './action-creators'
+export { globalState } from './reducers'

@@ -1,4 +1,4 @@
-import { SET_LOADER } from './constants'
+import { SET_LOADER } from '../action-types'
 
 const initialState = {
     blocking: false,
