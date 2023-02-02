@@ -74,8 +74,11 @@ export const Login = (props) => {
                                 onChange={_handleChange}
                                 placeholder="Email Address"
                                 required={true}
+                                data-testid="email-login"
                             />
-                            <div className="errorMsg">{errors.email}</div>
+                            <div className="errorMsg" data-testid="email-login-error">
+                                {errors.email}
+                            </div>
                         </div>
                         <div className="form-group">
                             <PasswordField
@@ -83,8 +86,11 @@ export const Login = (props) => {
                                 placeholder="Password"
                                 onChange={_handleChange}
                                 required={true}
+                                data-testid="password-login"
                             />
-                            <div className="errorMsg">{errors.password}</div>
+                            <div className="errorMsg" data-testid="password-login-error">
+                                {errors.password}
+                            </div>
                         </div>
 
                         <Submit className="btn btn-success btn-block center" text="Sign in" />
