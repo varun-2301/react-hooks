@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
-export default styled.div`
+export default createGlobalStyle`
     body,
     html {
         height: 100%;
@@ -8,8 +8,7 @@ export default styled.div`
     .toast {
         background-color: #030303 !important;
     }
-    .toast-success,
-    .toast-message {
+    .toast-success {
         background-color: #51a351 !important;
     }
     .toast-error {

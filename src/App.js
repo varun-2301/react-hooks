@@ -19,9 +19,8 @@ function App() {
         <Provider store={store}>
             <ErrorBoundary>
                 <Suspense fallback={<Loader />}>
-                    <AppStyle>
-                        <MainRoute />
-                    </AppStyle>
+                    <MainRoute />
+                    <AppStyle />
                 </Suspense>
             </ErrorBoundary>
         </Provider>

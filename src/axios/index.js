@@ -54,8 +54,8 @@ api.interceptors.response.use(
                     message = error.response?.statusText || 'Server Error'
                     break
             }
-        } else if (error.request) {
-            message = error.request?.statusText
+        } else if (error.request && error.request.statusText) {
+            message = error.request.statusText
         } else {
             message = error.message
         }
