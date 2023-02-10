@@ -49,7 +49,7 @@ export const Login = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         if (_validateForm()) {
-            const { email, password } = event.target
+            const { email, password } = event.target.elements
             const userData = {
                 email: email.value,
                 password: password.value,
@@ -73,7 +73,7 @@ export const Login = (props) => {
                                 name="email"
                                 onChange={_handleChange}
                                 placeholder="Email Address"
-                                required={true}
+                                //required={true}
                                 data-testid="email-login"
                             />
                             <div className="errorMsg" data-testid="email-login-error">
@@ -85,7 +85,7 @@ export const Login = (props) => {
                                 name="password"
                                 placeholder="Password"
                                 onChange={_handleChange}
-                                required={true}
+                                //required={true}
                                 data-testid="password-login"
                             />
                             <div className="errorMsg" data-testid="password-login-error">
